@@ -1,0 +1,83 @@
+<body>
+  <div class="titulo-container">
+      <h2 class="titulo">ESTANCIAS</h2>
+      <h4 class="subtitulo">MÁS DETALLES</h4>
+  </div>
+
+  <section class="contenido">
+      <div class="imagenes">
+          <img [src]="imagenPrincipal" class="imagen-principal" alt="default"> <!--PROPERTY BINDING  Este <img> usará el valor de imagenPrincipal como su src Si imagenPrincipal cambia, la imagen se actualiza automáticamente-->
+          <div class="miniaturas">
+              <img src="/Casa portada.webp" (click)="cambiarImagen('/Casa portada.webp')" class="miniatura" alt="casa"> <!--EVENT BINDING-->
+              <img src="/sala.webp" (click)="cambiarImagen('/sala.webp')" class="miniatura" alt="sala">
+              <img src="recámara.webp" (click)="cambiarImagen('recámara.webp')" class="miniatura" alt="recamara">
+          </div>
+      </div>
+      
+      <div class="costos">
+          <div class="fila">
+              <label class="label">HUÉSPEDES:</label>
+              <button class="boton" (click)="decrementarHuespedes()">-</button> <!-- hace uso de la función Huespedes()-->
+              <input type="number" [(ngModel)]="huespedes" class="input-box" (input)="calcularTotal()" min="1">
+              <button class="boton" (click)="incrementarHuespedes()">+</button>
+          </div>
+          <div class="fila">
+              <label class="label">NOCHES:</label>
+              <button class="boton" (click)="decrementarNoches()">-</button>
+              <input type="number" [(ngModel)]="noches" class="input-box" (input)="calcularTotal()" min="1"> <!--"El número de huéspedes en el input siempre será igual a huespedes. Si cambia, se recalcula el total."-->
+              <button class="boton" (click)="incrementarNoches()">+</button>
+          </div>
+
+          <div class="extras">
+              <label>EXTRAS</label>
+              <div><input type="checkbox" [(ngModel)]="mascota" (change)="calcularTotal()"> + MASCOTA $250 MXN</div>
+              <div><input type="checkbox" [(ngModel)]="calefaccion" (change)="calcularTotal()"> + CALEFACCIÓN $500 MXN</div>
+              <div><input type="checkbox" [(ngModel)]="rutaMontana" (change)="calcularTotal()"> + RUTA DE MONTAÑA $150 MXN</div>
+              <div><input type="checkbox" [(ngModel)]="senderismo" (change)="calcularTotal()"> + SENDERISMO $200 MXN</div>
+              <div><input type="checkbox" [(ngModel)]="cascada" (change)="calcularTotal()"> + VISITA LA CASCADA $50 MXN</div>
+          </div>
+
+          <h3>TOTAL CON IMPUESTOS ${{ total }} MXN</h3> <!-- INTERPOLACION   Muéstrame el valor de la variable total aquí dentro del HTML.-->
+          <button class="reservar">Reservar</button>
+      </div>
+  </section>
+
+  <div class="cuerpo">
+    <div class="info-container">
+        <div class="info-item">
+            <h3>ALOJAMIENTO ENTERO</h3>
+            <p>CASA DE CAMPO EN TEPOZTLÁN, MÉXICO</p>
+        </div>
+        <div class="info-item">
+            <h3>MÁS DE 16 HUÉSPEDES</h3>
+            <p>🏡 6 HABITACIONES<br>🛁 6 BAÑOS</p>
+        </div>
+        <div class="info-item">
+            <h3>ANFITRIÓN:</h3>
+            <p>DIEGO<br>2 AÑOS DE EXPERIENCIA</p>
+        </div>
+    </div>
+
+    <h2 class="estancias-title">ESTANCIAS</h2>
+
+    <div class="estancias-container">
+        <div class="estancia-card">
+            <img src="/ESTANCIA 1.png" alt="Estancia 1">
+            <h3>ADOSADO COLORIDO</h3>
+            <p>DESCANSAR Y RETIRARSE EN UNA CASA CON LA MEJOR COMUNIDAD</p>
+        </div>
+        <div class="estancia-card">
+            <img src="/ESTANCIA 2.png" alt="Estancia 2">
+            <h3>PLAZA BONANZA</h3>
+            <p>MIRA EL OCÉANO, ESCUCHA LAS OLAS Y DISFRUTA DEL MAR</p>
+        </div>
+        <div class="estancia-card">
+            <img src="/ESTANCIA 3.png" alt="Estancia 3">
+            <h3>SANTUARIO ANTIGUO</h3>
+            <p>ENCUENTRA LA CASA DE TUS SUEÑOS CERCA DEL COLEGIO Y DE TU OFICINA</p>
+        </div>
+    </div>
+</div>
+
+
+</body>
